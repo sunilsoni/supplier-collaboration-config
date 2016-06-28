@@ -59,7 +59,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://sc-auth-server.azurewebsites.net/eureka/
+      defaultZone: http://sc-eureka-server.azurewebsites.net/eureka/
 
 security:
   sessions: if-required
