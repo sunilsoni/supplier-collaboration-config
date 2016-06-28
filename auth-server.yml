@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: cloud
 ---
 # Datasource and JPA configuration to be used for storing the OAuth authorization details 
 # and token store
@@ -59,7 +59,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://sc-auth-server.azurewebsites.net/eureka/
 
 security:
   sessions: if-required
