@@ -3,7 +3,7 @@ spring:
     active: default
 ---
 spring:
-  profiles: default
+  profiles: development
 server:
   port: 8761
 
@@ -19,9 +19,9 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ---
 spring:
-  profiles: cloud
-#server:
-#port: 8761
+  profiles: default
+server:
+  port: 8761
 
 # Defines the Eureka server that is used by the Netflix OSS components to use as the registry
 # for server discovery
