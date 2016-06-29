@@ -3,7 +3,7 @@ spring:
     active: default
 ---
 spring:
-  profiles: development
+  profiles: default
 server:
   port: 8761
 
@@ -19,7 +19,7 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ---
 spring:
-  profiles: default
+  profiles: cloud
 #server:
 #port: 8761
 
