@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: cloud
 ---
 spring:
   profiles: development
@@ -20,4 +20,4 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/  
+      defaultZone: http://sc-eureka-server.azurewebsites.net/eureka/

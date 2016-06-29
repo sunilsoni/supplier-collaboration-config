@@ -39,9 +39,9 @@ security:
 spring:
   profiles: cloud
   datasource:
-    url: jdbc:mysql://us-cdbr-azure-east2-d.cloudapp.net:3306/suppcolldb
-    username: b99a4275db01c8
-    password: 23b35e59
+    url: jdbc:mysql://us-cdbr-azure-east2-d.cloudapp.net/apiauthdb
+    username: b58cf47a74e0dc
+    password: 3d11ba54
     driver-class: com.mysql.jdbc.Driver
   
   jpa:
