@@ -6,41 +6,57 @@ spring:
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
 spring:
   profiles: development
-  datasource:
-    url: jdbc:mysql://localhost:3306/apiAuth
-    username: root
-    password: root
-    driver-class: com.mysql.jdbc.Driver
 
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    show-sql: false
-    hibernate:
-      ddl-auto: create
-  aop:
-    proxy-target-class: true
 # Define the port where the API gateway server would be running
 server:
-  port: 8765
+  port: 8765 
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/xml,application/json
+feign:
+  compression:
+    min-request-size: 1024
+    mime-types: application/xml,application/json
 
 # Define the routes which determine what URL are serviced by what applications.
 # The application/services are defined in the bootstrap.yml file of individual applications
 # using the spring.application.name property.
 
-# Note that we don't proxy the calls to the authorization server. The reason being that 
-# Spring cloud security would need to secure the api gateway before it can route the 
-# requests using zuul
 zuul:
   routes:
-    item-service: /api/item/**
+    po-job: /api/job/**  
     asn-service: /api/asn/**
     po-service: /api/po/**
     web-portal: /**
+  host:
+    connect-timeout-millis: 1000000
+    socket-timeout-millis: 6000000
+
+hystrix: 
+  command.default.execution.isolation.strategy: THREAD
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 600000
+  command.default.execution.timeout.enabled: false
+  command.default.fallback.enabled: false
+  threadpool.default.coreSize: 20
+  # Increase the Hystrix timeout to 60s (per service)
+  #po-service.execution.isolation.thread.timeoutInMilliseconds: 60000
+po-service:
+  ribbon:
+    ReadTimeout: 600000
+    ConnectTimeout: 600000
+po-job:
+  ribbon:
+    ReadTimeout: 600000
+    ConnectTimeout: 600000 
+
+
 # Define the Eureka server that handles service registration
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 5
 
 ---
 
@@ -48,19 +64,7 @@ eureka:
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
 spring:
   profiles: cloud
-  datasource:
-    url: jdbc:mysql://us-cdbr-azure-east2-d.cloudapp.net:3306/suppcolldb
-    username: b99a4275db01c8
-    password: 23b35e59
-    driver-class: com.mysql.jdbc.Driver
 
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    show-sql: false
-    hibernate:
-      ddl-auto: create
-  aop:
-    proxy-target-class: true
 # Define the port where the API gateway server would be running
 server:
   port: 8765
@@ -75,7 +79,7 @@ server:
 # requests using zuul
 zuul:
   routes:
-    item-service: /api/item/**
+    po-job: /api/job/**
     asn-service: /api/asn/**
     po-service: /api/po/**
     web-portal: /**

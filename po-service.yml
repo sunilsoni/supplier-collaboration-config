@@ -1,11 +1,20 @@
 spring:
   profiles:
-    active: development
+    active: cloud
 ---
+server:
+  port: 8083 
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/xml,application/json
+feign:
+  compression:
+    min-request-size: 1024
+    mime-types: application/xml,application/json
+
 spring:
   profiles: development
-server:
-  port: 8083
 
 eureka:
   client:
@@ -21,8 +30,16 @@ spring:
   profiles: cloud
 server:
   port: 8083
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/xml,application/json
+feign:
+  compression:
+    min-request-size: 1024
+    mime-types: application/xml,application/json
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://sc-eureka-server.azurewebsites.net/eureka/
