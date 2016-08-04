@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: cloud
+    active: default
 ---
 spring:
   profiles: development
@@ -13,9 +13,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 ---
 spring:
-  profiles: cloud
-server:
-  port: 8090
+  profiles: default
+#server:
+#  port: 8090
 
 eureka:
   client:
