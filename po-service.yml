@@ -1,7 +1,9 @@
 spring:
   profiles:
-    active: cloud
+    active: default
 ---
+spring:
+  profiles: development
 server:
   port: 8083 
   compression:
@@ -12,9 +14,6 @@ feign:
   compression:
     min-request-size: 1024
     mime-types: application/xml,application/json
-
-spring:
-  profiles: development
 
 eureka:
   client:
@@ -27,17 +26,17 @@ logging:
     com.jci: DEBUG  
 ---
 spring:
-  profiles: cloud
-server:
-  port: 8083
-  compression:
-    enabled: true
-    min-response-size: 1024
-    mime-types: application/xml,application/json
-feign:
-  compression:
-    min-request-size: 1024
-    mime-types: application/xml,application/json
+  profiles: default
+#server:
+#  port: 8083
+ # compression:
+  #  enabled: true
+   # min-response-size: 1024
+    #mime-types: application/xml,application/json
+#feign:
+#  compression:
+#    min-request-size: 1024
+#    mime-types: application/xml,application/json
 
 eureka:
   client:
