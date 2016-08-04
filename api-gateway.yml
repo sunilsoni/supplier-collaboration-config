@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: development
+    active: default
 ---
 # Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
@@ -63,11 +63,11 @@ eureka:
 # Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
 spring:
-  profiles: cloud
+  profiles: default
 
 # Define the port where the API gateway server would be running
-server:
-  port: 8765
+#server:
+#  port: 8765
 
 
 # Define the routes which determine what URL are serviced by what applications.
@@ -87,4 +87,5 @@ zuul:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/  
+      defaultZone: http://sc-eureka-server.azurewebsites.net/eureka/
+
