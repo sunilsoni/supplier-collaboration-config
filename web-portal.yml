@@ -14,9 +14,6 @@ server:
 ---
 spring:
   profiles: default
-#server:
-#  port: 8090
-
 eureka:
   client:
     serviceUrl:
