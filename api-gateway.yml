@@ -87,5 +87,6 @@ zuul:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://sc-eureka-server.azurewebsites.net/eureka/
+      defaultZone: http://supplier-collaboration-eureka.azurewebsites.net/eureka/
+#http://sc-eureka-server.azurewebsites.net/eureka/
 
